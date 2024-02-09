@@ -5,7 +5,7 @@
     <div class="chose__wrapper" id="select">
       <div class="img__wrapper">
         <a><img  class="chose__wrapper__img" id="first" src="@/assets/webdev.jpg" alt=""></a>
-        <a href="#"><img @click="$router.push('/Lists')" class="chose__wrapper__img chose__wrapper__img--hide" id="second" src="@/assets/python.jpeg" alt=""></a>
+        <a href="#"><img @click="$router.push('/webdev')" class="chose__wrapper__img chose__wrapper__img--hide" id="second" src="@/assets/python.jpeg" alt=""></a>
         <div class="btn" @click="show"></div>
         <div class="btn2" @click="show2"></div>
       </div>

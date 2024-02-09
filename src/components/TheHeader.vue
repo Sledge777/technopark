@@ -1,17 +1,18 @@
 <template>
   <header>
-    <base-logo>
-        <header-refs class="header-refs"/>
-    </base-logo>
+    <base-logo/>
+    <header-refs/>
+    <auth/>
   </header>
 </template>
 
 <script>
 import HeaderRefs from '@/components/HeaderRefs.vue'
 import BaseLogo from '@/components/BaseLogo.vue'
+import auth from '@/components/auth.vue'
 export default {
   components: {
-    HeaderRefs,BaseLogo
+    HeaderRefs,BaseLogo,auth
   }
 }
 </script>
@@ -20,11 +21,8 @@ export default {
 header {
   width: 80%;
   margin: auto;
-  margin-top: 1%;
-  margin-bottom: 50px;
-}
-.header-refs {
-  margin-left: 3%;
-  align-self: center;
+  padding-top: 1%;
+  padding-bottom: 50px;
+  display: flex;
 }
 </style>

@@ -36,17 +36,12 @@ export default {
 }
 </script>
 <style scoped>
-.sideInfo {
-    width: 100%;
-}
 .sideInfo__refs {
   color: #024a7a;
   list-style: none;
   font-size: 1.5em;
   align-self: center;
-  margin-left: 2%;
   line-height: 1.2;
-  width: 100%;
 }
 
 .sideInfo__refs__adv {
@@ -60,7 +55,7 @@ export default {
 .sideInfo__wrapper li{
   text-decoration: none;
   list-style: none;
-  max-width: 7%;
+  max-width: 40px;
 }
 .sideInfo__logo {
   max-width:100%;

@@ -10,13 +10,5 @@ export default {
 </script>
 
 <style>
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  background-color: black;
-  max-height: 100vh;
-}
+
 </style>
