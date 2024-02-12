@@ -1,7 +1,7 @@
 <template>
     <div class="auth">
-        <button @click="$router.push('/webdev')">войти</button>
-        <button @click="$router.push('/webdev')">зарегистрироваться</button> 
+        <button @click="$router.push('/login')">войти</button>
+        <button @click="$router.push('/reg')">зарегистрироваться</button> 
     </div>
 </template>
 <script>
