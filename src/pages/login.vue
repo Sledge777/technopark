@@ -2,20 +2,66 @@
   <div class="body">
     <section class="auth">
       <button type="button" class="back" @click="$router.push('/')">Назад</button>
-      <div class="wrapper">
-        <input type="text" placeholder="Логин">
-        <input type="text" placeholder="Пароль">
+      <form class="wrapper" @submit.prevent="auth()">
+        <input v-model="email" type="email" placeholder="Логин">
+        <input v-model="password" type="password" placeholder="Пароль">
         <button type="submit" class="btn">зарегистрироваться</button>
-      </div>
+        <div id="validate">{{ this.resp }}</div>
+      </form>
     </section>
   </div>
 </template>
 
 <script>
-
+import axios from 'axios';
+import { setTimeout } from 'core-js';
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      error:'',
+      resp:'',
+      token:'',
+    }
+  },
+  methods: {
+    async auth() {
+      await axios.post('http://localhost:5000/auth/login', {
+            email: this.email,
+            password: this.password
+      })
+      .then(response => {
+        this.token = response.data.token
+        console.log(response)
+      })
+      .catch(error => {
+        this.error = error;
+        console.log(this.error);
+      })
+      if(this.error.message == 'Request failed with status code 500') {
+        let div = document.getElementById('validate');
+        div.classList.toggle('denied');
+        this.resp = 'Некорректная почта или пароль';
+      }else {
+        let div = document.getElementById('validate');
+        div.classList.toggle('access');
+        this.resp = 'Авторизация успешна!';
+        localStorage.setItem('token',this.token);
+        await setTimeout(() => this.$router.push('/'), 1000)
+      }
+    }
+  }
+}
 </script>
 
 <style scoped>
+.denied {
+  color: red;
+}
+.access {
+  color: green;
+}
 .body {
   background-color: grey;
   height: 100vh;

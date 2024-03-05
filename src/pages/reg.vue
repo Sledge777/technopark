@@ -2,35 +2,63 @@
     <div class="body">
         <section class="auth">
             <button type="button" class="back" @click="$router.push('/')">Назад</button>
-            <div class="wrapper">
-                <input type="text" placeholder="Новый Логин" v-model="login">
-                <input type="text" placeholder="Новый Пароль" v-model="password">
-                <button type="submit" class="btn" @click="reg()">зарегистрироваться</button>
-            </div>
+            <form class="wrapper" @submit.prevent="auth()">
+                <input type="email" placeholder="Новый Логин" v-model="email">
+                <input type="password" placeholder="Новый Пароль" v-model="password">
+                <button type="submit" class="btn">зарегистрироваться</button>
+                <div id="validate">{{ this.resp }}</div>
+            </form>
         </section>  
     </div>
 </template>
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
-            login: '',
+            email: '',
             password: '',
+            error:'',
+            resp:'',
+            token:'',
         }
     },
     methods: {
-        async reg(login,password) {
-            try {
-                const response = await axios.post('/api/login', login,password);
-                const token = response.data.token;
-                localStorage.setItem('token', token);
-                return true; 
-            } catch {}
+        async auth() {
+            await axios.post('http://localhost:5000/auth/login', {
+                email: this.email,
+                password: this.password
+            })
+            .then(response => {
+                this.token = response.data
+                console.log(response)
+            })
+            .catch(error => {
+                this.error = error;
+                console.log(this.error);
+            })
+            if(this.error.message == 'Request failed with status code 401') {
+                let div = document.getElementById('validate');
+                div.classList.toggle('denied');
+                this.resp = 'Пользователь с данной почтой уже существует!';
+            }else {
+                let div = document.getElementById('validate');
+                div.classList.toggle('access');
+                this.resp = 'Авторизация успешна!';
+                localStorage.setItem('token',this.token);
+                await setTimeout(() => this.$router.push('/'), 1000)
+            }
         }
     }
 }
 </script>
 <style scoped>
+.denied {
+  color: red;
+}
+.access {
+  color: green;
+}
 .body {
   background-color: grey;
   height: 100vh;
