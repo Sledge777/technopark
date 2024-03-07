@@ -1,10 +1,10 @@
-<template>
+<template lang="ru">
     <div class="body">
         <section class="auth">
             <button type="button" class="back" @click="$router.push('/')">Назад</button>
             <form class="wrapper" @submit.prevent="auth()">
-                <input type="email" placeholder="Новый Логин" v-model="email">
-                <input type="password" placeholder="Новый Пароль" v-model="password">
+                <input type="email" placeholder="Новый Логин" v-model="email" required>
+                <input type="password" placeholder="Новый Пароль" v-model="password" required>
                 <button type="submit" class="btn">зарегистрироваться</button>
                 <div id="validate">{{ this.resp }}</div>
             </form>
@@ -46,6 +46,9 @@ export default {
                 div.classList.toggle('access');
                 this.resp = 'Авторизация успешна!';
                 localStorage.setItem('token',this.token);
+                // const jwt = require('jsonwebtoken')
+                // const decoded = jwt.decode(this.token)
+                // console.log(decoded)
                 await setTimeout(() => this.$router.push('/'), 1000)
             }
         }

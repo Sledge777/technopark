@@ -1,4 +1,4 @@
-<template>
+<template lang="ru">
   <the-header/>
   <selector/>
 </template>
@@ -6,10 +6,22 @@
 import TheHeader from '@/src/../components/TheHeader.vue'
 import Selector from '@/src/../components/Selector.vue'
 export default {
-  components: {
+    components: {
     TheHeader,Selector
   },
+  data() {
+    return {
+      token: '',
+    }
+  },
+  methods: {
+    saveToken() {
+      
+    }
+  },
+
 }
+
 </script>
 <style scoped>
 body {
