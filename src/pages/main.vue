@@ -11,13 +11,10 @@ export default {
   },
   data() {
     return {
-      token: '',
     }
   },
   methods: {
-    saveToken() {
-      
-    }
+
   },
 
 }

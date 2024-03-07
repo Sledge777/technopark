@@ -5,6 +5,7 @@
       <h1 class="logo__text">
         ФИЛИАЛ РГСУ В Г. ПЯТИГОРСКЕ СТАВРОПОЛЬСКОГО КРАЯ
       </h1>
+      <div class="logo__line"></div>
     </div>
 </template>
 
@@ -33,6 +34,9 @@
   color: #024a7a;
   text-align: center;
   align-self: center;
-  margin-left: 3%;
+
+}
+.logo__line:last-child {
+  margin-right: 1%;
 }
 </style>

@@ -63,7 +63,7 @@ export default {
 aside {
   height: 100vh;
   width: 15vw;
-  background-color: orange;
+  background-color: #024a7a;
   border-radius: 0 25px 25px 0;
 }
 ul {
@@ -75,14 +75,21 @@ ul {
   padding-top: 10px;
 }
 li {
-  color:blueviolet;
   display: block;
-  background-color: black;
-  padding: 20px;
-  border-radius: 15px;
   text-align: center;
   cursor: pointer;
+  background-color: white;
+  color: #024a7a;
   font-size: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding : 10%;
+  transition: all 0.7s;
+}
+li:hover {
+  background-color:#024a7a ;
+  color:white;
+  transition: all 0.7s;
 }
 section {
   display: flex;
